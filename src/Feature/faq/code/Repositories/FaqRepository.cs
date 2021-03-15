@@ -8,12 +8,12 @@
 
   public static class FaqRepository
   {
-    public static IEnumerable<Item> Get([NotNull] Item item)
+    public static IEnumerable<Item> Get(Item item)
     {
       if (item == null)
         throw new ArgumentNullException(nameof(item));
 
-      return item.GetMultiListValueItems(Templates.FaqGroup.Fields.GroupMember).Where(i => i.IsDerived(Templates.Faq.ID));
+      return item.GetMultiListValueItems(Templates.FaqGroup.Fields.GroupMember).Where(i => i.DescendsFrom(Templates.Faq.ID));
     }
   }
 }
